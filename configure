@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -f local-config.properties ];
+then
+    echo -e "Existing config, local configuration can be modified by editing \033[0;33mlocal-config.properties\033[0m."
+else
+    echo -e "Initializing default configuration in \033[0;33mlocal-config.properties\033[0m. Please consider \033[0;31moverriding the RCON_SECRET\033[0m"
+    echo "RCON_SECRET=s3cr3t" >> local-config.properties
+    echo "MC_MAIN_PORT=25565" >> local-config.properties
+    echo "MC_RCON_PORT=25575" >> local-config.properties
+fi

@@ -1,0 +1,4 @@
+#!/bin/bash
+source ./util/load_local_config.sh
+
+docker-compose stop

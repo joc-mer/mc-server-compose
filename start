@@ -1,0 +1,19 @@
+#!/bin/bash
+source ./util/load_local_config.sh
+
+# Platform agnostic open
+function aopen() {
+  case $(uname -s) in
+        *[Dd]arwin* ) open "$@";;
+        *) xdg-open "$@";;
+  esac
+}
+
+export UID_GID="$(id -u):$(id -g)"
+
+./configure
+
+echo -e "Start minecraft server with user \033[0;32m$UID_GID\033[0m"
+
+docker-compose up -d
+aopen http://localhost:8280
