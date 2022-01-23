@@ -1,12 +1,6 @@
 #!/bin/bash
 
-# Platform agnostic sed
-function ased() {
-  case $(uname -s) in
-        *[Dd]arwin* | *BSD* ) gsed "$@";;
-        *) sed "$@";;
-  esac
-}
+source ./util/load_local_config.sh
 
 if [ ! -f "docker-compose.yml" ]; then
     1>&2 echo -e "\033[0;31mError\033[0m This command should be executed in the \033[0;33msame directory as the docker-compose.yml\033[0m file which has been used to start the Minecraft server container."
@@ -14,8 +8,7 @@ if [ ! -f "docker-compose.yml" ]; then
 fi
 
 container_name=$(pwd | ased -E "s;.*/;;" | tr '[:upper:]' '[:lower:]')"_mc_1"
-rcon_password=$(ased -rn 's/^RCON_SECRET=([^\n]+)$/\1/p' local-config.properties)
 
 echo -e "Connecting to minecraft server using \033[0;33mrcon-cli\033[0m embedded in the container \033[0;32m$container_name\033[0m"
 
-docker exec -it nemalhaj2_mc_1 rcon-cli --host localhost --password $rcon_password
+docker exec -it $container_name rcon-cli --host localhost --password $RCON_SECRET
