@@ -1,4 +1,4 @@
-# Simple docker compose based minecraft server with when admin
+# Simple docker compose based minecraft server with web admin
 
 This uses https://github.com/itzg/docker-minecraft-server and https://github.com/hcsama/MCAdmin
 
@@ -24,7 +24,11 @@ Override the properties in `local-config.properties` if necessary.
 
 ## Start the server
 
-To start the containers, create a new world if necessary and open the web browser with the admin, execute:
+To 
+- start the containers, 
+- create a new world if no one exists and
+- open the web browser with the admin
+execute:
 ```sh
 ./start
 ```
