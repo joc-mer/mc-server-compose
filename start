@@ -14,8 +14,9 @@ function aopen() {
 export UID_GID="$(id -u):$(id -g)"
 
 ./configure
+load_local_config
 
-echo -e "Start minecraft server with user \033[0;32m$UID_GID\033[0m"
+echo -e "Start minecraft server with user \033[0;32m$UID_GID\033[0m and port $MC_MAIN_PORT"
 
-docker-compose up -d
-aopen http://localhost:8280
+docker compose up -d
+echo "open http://localhost:8280 for admin"

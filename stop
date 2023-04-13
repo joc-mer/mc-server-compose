@@ -3,4 +3,6 @@
 source ./util/check_dc_file.sh
 source ./util/load_local_config.sh
 
-docker-compose stop
+load_local_config
+
+docker compose stop

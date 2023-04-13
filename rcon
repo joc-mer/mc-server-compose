@@ -3,7 +3,9 @@
 source ./util/check_dc_file.sh
 source ./util/load_local_config.sh
 
-container_name=$(pwd | ased -E "s;.*/;;" | tr '[:upper:]' '[:lower:]')"_mc_1"
+load_local_config
+
+container_name=$(pwd | ased -E "s;.*/;;" | tr '[:upper:]' '[:lower:]')"-mc-1"
 
 echo -e "Connecting to minecraft server using \033[0;33mrcon-cli\033[0m embedded in the container \033[0;32m$container_name\033[0m"
 
